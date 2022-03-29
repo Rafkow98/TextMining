@@ -2,7 +2,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
 
-def stopwords_del(text):
+def delStopwords(text):
     eng_stopwords = stopwords.words('english')
     token = word_tokenize(text)
     tokens_without_sw = [word for word in token if
