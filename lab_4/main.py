@@ -14,4 +14,4 @@ if __name__ == '__main__':
     vectorizer = TfidfVectorizer()
     text_token = tokenizer.text_tokenizer(text)
     x_transform = vectorizer.fit_transform(text_token)
-    print(x_transform)
+    print(x_transform.toarray())
