@@ -1,14 +1,14 @@
-import stopwords
-import text_clean
-import text_stem
+from stopwords import stopwords_del
+from text_clean import cleanText
+from text_stem import stemSentence
 
 
 def text_tokenizer(text: str) -> list:
-    v1 = text_clean.text_clean(text)
-    v2 = stopwords.stopwords_del(v1)
-    v3 = text_stem.stemSentence(v2)
+    cleaned = cleanText(text)
+    stopw = stopwords_del(cleaned)
+    stemmed = stemSentence(stopw)
     word_list = []
-    for word in v3:
+    for word in stemmed:
         if len(word) > 3:
             word_list.append(word)
     return word_list
