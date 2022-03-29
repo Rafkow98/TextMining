@@ -1,14 +1,14 @@
 import re
 
 
-def text_clean(text: str):
+def cleanText(text: str):
     emot = ' '.join([str(i) for i in
-                          re.findall(r'(?::\)|;\)|;\(|:>|:<|;<|:-\)|;-\))', text)])
-    t1 = re.sub(r'(?::\)|;\)|;\(|:>|:<|;<|:-\)|;-\))', '', text)
-    t2 = t1.lower()
-    t3 = re.sub(r'\d', '', t2)
-    t4 = re.sub(r'<.*?>', '', t3)
-    t5 = re.sub(' +', ' ', t4)
-    t6 = re.sub(r'[,;.]', '', t5)
-    res = t6 + emot
+                    re.findall(r'(?::\)|;\)|;\(|:>|:<|;<|:-\)|;-\))', text)])
+    emot_del = re.sub(r'(?::\)|;\)|;\(|:>|:<|;<|:-\)|;-\))', '', text)
+    low = emot_del.lower()
+    numbers = re.sub(r'\d', '', low)
+    html = re.sub(r'<.*?>', '', numbers)
+    multiple_blank = re.sub(' +', ' ', html)
+    punct_marks = re.sub(r'[,;.]', '', multiple_blank)
+    res = punct_marks + emot
     return res
