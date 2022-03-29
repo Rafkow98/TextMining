@@ -1,11 +1,11 @@
-from stopwords import stopwords_del
+from stopwords import delStopwords
 from text_clean import cleanText
 from text_stem import stemSentence
 
 
 def text_tokenizer(text: str) -> list:
     cleaned = cleanText(text)
-    stopw = stopwords_del(cleaned)
+    stopw = delStopwords(cleaned)
     stemmed = stemSentence(stopw)
     word_list = []
     for word in stemmed:
