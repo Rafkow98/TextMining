@@ -1,17 +1,15 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-import tokenizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from tokenizer import text_tokenizer
+import pandas as pd
 
 
 if __name__ == '__main__':
-    text = 'In our modern world, there are many factors that place the wellbeing of the planet in jeopardy. ' \
-           'While some people have the opinion that environmental problems are just a natural occurrence, others' \
-           'believe that human beings have a huge impact on the environment. Regardless of your viewpoint, ' \
-           'take into consideration the following factors that place our environment as well as the planet ' \
-           'Earth in danger. Global warming or climate change is a major contributing factor to environmental ' \
-           'damage. Because of global warming, we have seen an increase in melting ice caps, a rise in sea ' \
-           'levels, and the formation of new weather patterns. These weather patterns have caused stronger ' \
-           'storms, droughts, and flooding in places that they formerly did not occur.'
-    vectorizer = TfidfVectorizer()
-    text_token = tokenizer.text_tokenizer(text)
-    x_transform = vectorizer.fit_transform(text_token)
+    data = pd.read_csv('./data/True.csv', usecols=['title', 'text'])
+    vectorizer = CountVectorizer(tokenizer=text_tokenizer)
+    x_transform = vectorizer.fit_transform(data['title'][:10])
+    print(vectorizer.get_feature_names_out())
     print(x_transform.toarray())
+    sample = data['title'].sample(10)
+    x_transform_sample = vectorizer.fit_transform(sample)
+    print(vectorizer.get_feature_names_out())
+    print(x_transform_sample.toarray())
