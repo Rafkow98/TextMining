@@ -9,6 +9,6 @@ def cleanText(text: str):
     numbers = re.sub(r'\d', '', low)
     html = re.sub(r'<.*?>', '', numbers)
     multiple_blank = re.sub(' +', ' ', html)
-    punct_marks = re.sub(r'[,;.]', '', multiple_blank)
-    res = punct_marks + emot
-    return res
+    punct_marks = re.sub(r'[,;.\']', '', multiple_blank)
+    result = punct_marks + emot
+    return result
