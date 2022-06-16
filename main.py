@@ -111,3 +111,20 @@ if __name__ == '__main__':
           f'SVM classifier: {metrics.accuracy_score(y_test, svm)} \n'
           f'AdaBoost classifier: {metrics.accuracy_score(y_test, adaboost)} \n'
           f'Bagging classifier: {metrics.accuracy_score(y_test, bagging)}')
+
+    # Dokładność (accuracy) - stosunek poprawnie sklasyfikowanych wiadomości do wszystkich wiadomości.
+    # W przypadku najdokładniejszego klasyfikatora (SVM) ta miara wyniosła niecałe 97%,
+    # więc poprawnie sklasyfikowano ok. 97% wszystkich wiadomości ze zbioru testowego.
+
+    # Precyzja (precision) - stosunek wiadomości poprawnie sklasyfikowanych jako pozytywne (true positives)
+    # do wszystkich wiadomości sklasyfikowanych jako pozytywne (true positives + false positives).
+    # Klasyfikator SVM posiadał precyzję wynoszącą 0,97 dla wiadomości, które nie są spamem
+    # oraz 0,94 dla wiadomości będących spamem.
+
+    # Czułość (recall) - stosunek wiadomości poprawnie sklasyfikowanych jako pozytywne (true positives)
+    # do wszystkich wiadomości faktycznie pozytywnych (true positives + false negatives).
+    # Czułość wiadomości niebędących spamem dla klasyfikatora SVM to 0,99, natomiast dla pozostałych 0,85.
+    # Tak duża różnica jest spowodowana małą liczbą wiadomości typu spam w zbiorze testowym - było ich jedynie 34.
+
+    # Miara F1 - wyliczana jako 2 * precision * recall / (precision + recall).
+    # Wartości tej miary (SVM) wyniosły 0,98 dla wiadomości, które nie są spamem oraz 0,89 dla pozostałych wiadomości.
